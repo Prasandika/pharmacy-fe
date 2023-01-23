@@ -1,0 +1,36 @@
+<app-nav-bar></app-nav-bar>
+
+<main class="container" *ngIf="product$ | async as product">
+  <!-- Left Column / Headphones Image -->
+  <div class="left-column">
+    <img width="100" [src]="product.imageUrl" alt="" />
+    <div
+      [ngStyle]="{ 'background-image': 'url(' + product.imageUrl + ')' }"
+      alt=""
+    ></div>
+  </div>
+
+  <!-- Right Column -->
+  <div class="right-column">
+    <!-- Product Description -->
+    <div class="product-description">
+      <span>Item</span>
+      <h1>{{ product.title }}</h1>
+      <p>
+        {{ product.description }}
+      </p>
+    </div>
+
+    <!-- Product Pricing -->
+    <div class="product-price">
+      <span>$ {{ product.price }}</span>
+    </div>
+    <button
+      class="btn btn-primary my-2"
+      [disabled]="product.boughtUserId"
+      (click)="buyProduct()"
+    >
+      {{ product.boughtUserId ? "Owned by " + product.boughtUserId : "Pay" }}
+    </button>
+  </div>
+</main>
