@@ -1,0 +1,13 @@
+<app-nav-bar [selected]="'products'" [isLoggedIn]="true"></app-nav-bar>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-6">
+      <app-product-details [product]="editingProduct"></app-product-details>
+    </div>
+    <div class="col-6">
+      <app-product-list-admin
+        (edited)="editProduct($event)"
+      ></app-product-list-admin>
+    </div>
+  </div>
+</div>
