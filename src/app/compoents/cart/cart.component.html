@@ -1,0 +1,20 @@
+<app-nav-bar></app-nav-bar>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <ul class="list-group" *ngFor="let product of products$ | async">
+        <li class="list-group-item my-2" (click)="navigate(product.id)">
+          <img
+            width="50"
+            height="50"
+            class="mx-2"
+            [src]="product.imageUrl"
+            alt="i"
+          />
+
+          {{ product.title }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
