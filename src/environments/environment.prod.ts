@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  API_URL: 'https://pharmacy-be-production.up.railway.app',
+  API_URL: 'https://pharmacy-be-production-b858.up.railway.app',
   firebaseConfig: {
     apiKey: 'AIzaSyD0ChSnHgiM9tVmBd7G-yFK5M9yxOLSBTc',
     authDomain: 'api-sd-md.firebaseapp.com',
