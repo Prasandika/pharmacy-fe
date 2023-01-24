@@ -16,7 +16,11 @@ export class ChatHolderComponent implements OnInit {
   @Input() mode!: string;
   @Input() chat!: Chat;
 
-  constructor(private socket: Socket, private userService: UserService) {}
+  constructor(private socket: Socket, private userService: UserService) {
+    if (userService.getCurrentUser().role == UserRole.Regular) {
+      this.chat = new Chat();
+    }
+  }
 
   @ViewChild('messageContainer') messageContainer: ElementRef =
     {} as ElementRef;
