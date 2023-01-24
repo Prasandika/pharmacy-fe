@@ -1,3 +1,4 @@
+import { UserRole } from 'src/app/enums/user-role.enum';
 import { UserService } from 'src/app/services/user/user.service';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -20,7 +21,7 @@ export class NavBarComponent implements OnInit {
   }
 
   checkIsAdmin(): boolean {
-    return localStorage.getItem('role') === 'Admin';
+    return localStorage.getItem('role') === UserRole.Admin;
   }
 
   checkUserLoggedIn() {

@@ -1,0 +1,17 @@
+<app-nav-bar></app-nav-bar>
+<div class="contact__info container my-5">
+  <div class="row">
+    <div
+      class="contact__info__image col-lg-6"
+      data-black-overlay="2"
+      *ngIf="getRole() == 'Admin'"
+    >
+      <app-chat-list (chatSelected)="selectChat($event)"></app-chat-list>
+    </div>
+    <div class="contact__info__content text-center col-lg-6">
+      <h5 class="contact__info__heading">{{ getRole() }} Chat</h5>
+
+      <app-chat-holder [chat]="selectedChat"></app-chat-holder>
+    </div>
+  </div>
+</div>

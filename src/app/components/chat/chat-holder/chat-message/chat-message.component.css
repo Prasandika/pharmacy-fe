@@ -1,0 +1,15 @@
+.message-container {
+  margin: 5px;
+  padding: 4px 10px;
+  border-radius: 10px;
+}
+
+.user-name {
+  font-size: small;
+  font-weight: bold;
+  color: rgb(255, 53, 53);
+}
+
+.receiver-text {
+  background-color: rgb(49, 49, 49);
+}

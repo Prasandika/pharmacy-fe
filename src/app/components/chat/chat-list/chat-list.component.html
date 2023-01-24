@@ -1,0 +1,32 @@
+<div *ngFor="let chat of (chats$ | async)?.slice()?.reverse()">
+  <div class="bg-danger text-left mb-1">
+    <div
+      class="container btn"
+      style="cursor: pointer"
+      (click)="selectChat(chat)"
+    >
+      <div class="row">
+        <div class="col-lg-2">
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAACKCAMAAABCWSJWAAAAk1BMVEX///8AESEAAAAAABB4fIL///38/PwAABgAABQAEiAAABIAAA0AAAgADyEADB4AABa6u71+gYQnKjNqbHDx8vPn6eqDh4pbXmPBxMhwc3nW2duytrg6PUNSVVwACB5KT1aOkJXKy8wcHyaWmJxPUlRIS0yfo6URFRyrra8yNzsWGh0wMz8GCxVER08KDhwtMDYVGSUvEXLCAAADs0lEQVR4nO2abXOiMBCAQyjhHXkJUqNVAWvp9az3/3/dLVinaBVsCevNTZ4vTvuhfWaz2d0kEqJQKBQKhUKhUCgUCoVCgYZhHD7urEEIaync24al8zJ6eIi2YXpHC4hCWu5ePFfXdcf1XlZVepfQMMZIGi2pGfhag++bNC4Z5A7DVjFY5dEPjSNLWoQEXYWwxAtORSAw2sSZ4prA6vDsPCQfOnQKccHLGFid1WUTiAydGYi5a5DIuyhSY9Mtngkh4ZWYfKyRwDNJX5cdKpq54WgqJe0QAWiIZcJ/LbtVJm+Q2ggiBqn0bhPf/p0jiNTM+lQ0r0SJCmHWeZn9ukI7nNoiepIWCEycgvvYr4JVWqp+FY3i5O32FpVHFJV/KCrzW1RwciW/JW1xuhDvassHghhpetqZfSruA9Lov3b7VPQKpdoaRLz0rNCyQBtYnnS7U4VGWCawhzrDEsSIh9aocz+jztm8sLRrhw/b3SCeg2BQeF9eSxdrn+LMTQ1wdA+vzU9WLDCPzaACqevYmt0OjQ0/+W4hcEbsNmJDITAtF1/zlzTh6CKMGbwsaPsU4pt0P2foJocWk5Z76k2CBovSRZXWv7/TnRzL19nuLY73u6wU6PE4MYEIMJ6KNOXggX/f1FZpZQZkzz1UDCamWc7gs/XfwQUWLJsK1HRJE506NDkf69ljAr82Z0j3K/Vt7YzWtda36HsUCt4EhnERRu90Ap0JNtOsac3jrle9BvPCO7bCwKPF4imZzZKnRUHdY5XxvWLOThZvFBWenNY1P5g4rutAdWl3oqbsjkidjHns+p/Fvu46hw9w8ltdwNbcvSDj5W/dkP9MrswGXzCLkIy4RnPae7XySUDD8TIXTst273HsCMxzXjWKBsT6WzE5xGU+xpZmfXP+ZZd8jMwVr8Htq3PA14JFKlml3gmr3uPpJbwVkbuPoPGtb7hVuQRdS/RoVMT3E+VAfUMoMyoGy3quja+jZzJPaAZUlB8GpQ6L3OpS9DwwdLGMZZpsafctRicSn80Y4bsBQYHGuJN3TrvhTrI7LLJucQ2SOYNUNCeTVf5F8c02eE5QCEkq1fWX3BtxZe3njTVUZfIkx4T9vLwd8amcHTRw/zRI2kOljKiUMkxYMjhVNM1KZKwQ35gD93L9rCnluwHpYrCJVg+WElT4c++bSz/ms5Rz61pG2q5lmBCeUU8fhEczKUGB7pHX38L7OVGZyzrID3/xkvhmNvAv3fvblQqFQqFQKBQKhUKhUCj+P/4CVoo1QQ1PaXAAAAAASUVORK5CYII="
+            alt=""
+            width="50"
+            class="rounded py-2"
+          />
+        </div>
+        <div class="col-lg-10 py-2">
+          <div class="row">
+            <span class="ml-2 font-weight-bold text-left">{{
+              getFullName(chat.userId)
+            }}</span>
+          </div>
+          <div class="row">
+            <span class="ml-2">{{
+              chat.messages[chat.messages.length - 1].message
+            }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

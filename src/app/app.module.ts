@@ -1,3 +1,7 @@
+import { User } from './models/user.model';
+import { ChatMessageComponent } from './components/chat/chat-holder/chat-message/chat-message.component';
+import { ChatHolderComponent } from './components/chat/chat-holder/chat-holder.component';
+import { ChatListComponent } from './components/chat/chat-list/chat-list.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -28,6 +32,26 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { environment } from 'src/environments/environment';
 
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { ChatComponent } from './components/chat/chat.component';
+const config: SocketIoConfig = {
+  url: environment.API_URL,
+  options: {
+    query: {
+      user_role: localStorage.getItem('role')!,
+      userId: getUserId(),
+    },
+  },
+};
+
+function getUserId() {
+  if (localStorage.getItem('userJSON') !== null) {
+    return JSON.parse(localStorage.getItem('userJSON')!).id;
+  } else {
+    return 'null';
+  }
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +67,10 @@ import { environment } from 'src/environments/environment';
     ProductListAdminComponent,
     ProductItemComponent,
     CartComponent,
+    ChatComponent,
+    ChatListComponent,
+    ChatHolderComponent,
+    ChatMessageComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +82,8 @@ import { environment } from 'src/environments/environment';
 
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
+
+    SocketIoModule.forRoot(config),
 
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,

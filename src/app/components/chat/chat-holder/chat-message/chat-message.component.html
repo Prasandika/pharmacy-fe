@@ -1,0 +1,15 @@
+<div class="container">
+  <div
+    class="row message-container shadow"
+    [class]="
+      name == getCurrentUser().id || name == getCurrentUser().firstName
+        ? 'primary-purple-dark text-white'
+        : 'receiver-text text-dark'
+    "
+  >
+    <div class="col-md-12 ml-2">
+      <div class="row user-name fs-15">{{ getFullName(name) }}</div>
+      <div class="row user-message fs-15">{{ message }}</div>
+    </div>
+  </div>
+</div>

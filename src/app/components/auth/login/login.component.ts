@@ -1,3 +1,4 @@
+import { UserRole } from 'src/app/enums/user-role.enum';
 import { Router } from '@angular/router';
 import { UserService } from '../../../services/user/user.service';
 import { Component, OnInit } from '@angular/core';
@@ -23,12 +24,12 @@ export class LoginComponent implements OnInit {
   ) {
     if (
       localStorage.getItem('authToken') &&
-      localStorage.getItem('role') == 'Regular'
+      localStorage.getItem('role') == UserRole.Regular
     ) {
       this.router.navigateByUrl('/dashboard');
     } else if (
       localStorage.getItem('authToken') &&
-      localStorage.getItem('role') == 'Admin'
+      localStorage.getItem('role') == UserRole.Admin
     ) {
       this.router.navigateByUrl('/products');
     }

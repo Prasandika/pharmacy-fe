@@ -1,3 +1,4 @@
+import { ChatComponent } from './components/chat/chat.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/auth/login/login.component';
@@ -55,6 +56,10 @@ const routes: Routes = [
   {
     path: 'auth/register',
     component: RegisterComponent,
+  },
+  {
+    path: 'chat',
+    component: ChatComponent,
   },
   {
     path: '',

@@ -1,0 +1,47 @@
+<div class="container shadow-lg chat-container glass-card-chat pt-3">
+  <section
+    class="message-container p-2 glass-card-chat"
+    style="height: 80%"
+    #messageContainer
+  >
+    <app-chat-message
+      *ngFor="let message of chat?.messages"
+      [name]="message.senderId!"
+      [message]="message.message"
+    ></app-chat-message>
+  </section>
+
+  <form action="" (submit)="sendMessage()">
+    <div class="row w-100 input-section">
+      <div class="ml-2" style="width: fit-content"></div>
+      <!-- MESSAGE INPUT -->
+      <div
+        class="col mx-2 d-flex align-items-center justify-content-center"
+        style="width: max-content"
+      >
+        <input
+          type="text"
+          class="border-0 form-control shadow border-radius-2rem fs-15 pl-3 h-100 font-weight-bold"
+          placeholder="Enter Message"
+          [(ngModel)]="messageInput"
+          [ngModelOptions]="{ standalone: true }"
+          [disabled]="chat == null"
+        />
+      </div>
+
+      <!-- SEND BUTTON -->
+      <div
+        class="d-flex align-items-center justify-content-center mr-3"
+        style="width: fit-content"
+      >
+        <button
+          class="rounded-circle primary-purple-dark border-0"
+          type="submit"
+        >
+          <i class="fa-solid fa-paper-plane p-2 text-white"></i>
+          <!-- <i class="fa-solid fa-paper-plane-top"></i> -->
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
