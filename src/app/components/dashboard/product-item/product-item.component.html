@@ -25,9 +25,29 @@
     <div class="product-price">
       <span>$ {{ product.price }}</span>
     </div>
+    <div class="my-2" *ngIf="product?.quantity">
+      <div class="form-group">
+        Quantity
+        <input
+          type="number"
+          class="form-control my-1"
+          placeholder="Quantity"
+          [(ngModel)]="selectedQuantity"
+          min="1"
+          [max]="product?.quantity!"
+          [disabled]="product?.quantity! <= 0"
+        />
+      </div>
+      <span>Available quantity: {{ product?.quantity }}</span>
+    </div>
+
+    <div class="text-danger" *ngIf="product.quantity <= 0">Sold out</div>
+
     <button
       class="btn btn-primary my-2"
-      [disabled]="product.boughtUserId"
+      [disabled]="
+        product?.quantity! <= 0 || selectedQuantity! > product?.quantity!
+      "
       (click)="buyProduct()"
     >
       {{ product.boughtUserId ? "Owned by " + product.boughtUserId : "Pay" }}

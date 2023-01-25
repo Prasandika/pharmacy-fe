@@ -1,2 +1,33 @@
 <app-nav-bar [selected]="'orders'" [isLoggedIn]="true"></app-nav-bar>
-<p>order works!</p>
+<select
+  class="m-5"
+  [ngModel]="'default'"
+  (ngModelChange)="userChange($event)"
+  *ngIf="getCurrentUserRole() == 'Admin'"
+>
+  <option value="default" hidden>Select user</option>
+  <option value="all">All</option>
+  <option [value]="user.id" *ngFor="let user of users$ | async as Users">
+    {{ user.firstName + " " + user.lastName }}
+  </option>
+</select>
+<div class="container">
+  <ng-container *ngIf="products$ | async as Products">
+    <div class="card my-2" *ngFor="let order of orders$ | async as Orders">
+      <div class="row p-2">
+        <div class="">
+          <img
+            [src]="getProduct(Products, order.productId).imageUrl"
+            width="100"
+            class=""
+            alt=""
+          />
+        </div>
+        <div class="col-lg-8 float-right">
+          {{ getProduct(Products, order.productId).title }}
+        </div>
+        <div class="col-lg-2">Quantity : {{ order.quantity }}</div>
+      </div>
+    </div>
+  </ng-container>
+</div>

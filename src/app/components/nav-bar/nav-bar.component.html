@@ -19,8 +19,11 @@
     *ngIf="isLoggedIn && !checkIsAdmin()"
   >
     <ul class="navbar-nav">
-      <li class="nav-item" [ngClass]="selected === 'cart' ? 'active' : ''">
+      <!-- <li class="nav-item" [ngClass]="selected === 'cart' ? 'active' : ''">
         <a class="nav-link" routerLink="/cart">Cart</a>
+      </li> -->
+      <li class="nav-item" [ngClass]="selected === 'orders' ? 'active' : ''">
+        <a class="nav-link" routerLink="/orders">Orders</a>
       </li>
       <li class="nav-item" [ngClass]="selected === 'chat' ? 'active' : ''">
         <a class="nav-link" routerLink="/chat">Chat</a>
@@ -44,6 +47,10 @@
       </li>
       <li class="nav-item" [ngClass]="selected === 'chat' ? 'active' : ''">
         <a class="nav-link" routerLink="/chat">Chat</a>
+      </li>
+
+      <li class="nav-item" [ngClass]="selected === 'orders' ? 'active' : ''">
+        <a class="nav-link" routerLink="/orders">Orders</a>
       </li>
     </ul>
   </div>

@@ -39,12 +39,13 @@ const routes: Routes = [
   },
   {
     path: 'orders',
+    canActivate: [AuthGuard],
     component: OrderComponent,
   },
   {
     path: 'dashboard',
-    canActivate: [AuthGuard, RoleGuard],
     component: DashboardComponent,
+    canActivate: [AuthGuard, RoleGuard],
     data: {
       roles: [UserRole.Regular],
     },

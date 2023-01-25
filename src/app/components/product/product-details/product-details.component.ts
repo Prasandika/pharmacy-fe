@@ -42,6 +42,7 @@ export class ProductDetailsComponent implements OnInit {
       boughtUserId: new FormControl(null),
       price: new FormControl(null, [Validators.required]),
       imageUrl: new FormControl(null),
+      quantity: new FormControl(null, [Validators.min(0)]),
     });
   }
 

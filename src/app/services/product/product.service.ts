@@ -1,3 +1,4 @@
+import { OrderService } from './../order/order.service';
 import { Observable } from 'rxjs';
 import { environment } from './../../../environments/environment';
 import { Product } from './../../models/product.model';
@@ -8,7 +9,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ProductService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    private orderService: OrderService
+  ) {}
 
   update(value: Product) {
     return this.httpClient.put<Product>(
@@ -25,6 +29,10 @@ export class ProductService {
   }
 
   delete(productId: string) {
+    this.orderService
+      .deleteByProductId(productId)
+      .subscribe((res) => console.log('orders deleted', res));
+
     return this.httpClient.delete<Product>(
       environment.API_URL + '/products/' + productId
     );

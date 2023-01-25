@@ -1898,8 +1898,8 @@ progress {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
-  background-color: #fff;
+  color: #fff;
+  background-color: #212529;
   background-clip: padding-box;
   border: 0 solid #fff;
   -webkit-appearance: none;
@@ -1920,8 +1920,8 @@ progress {
   cursor: pointer;
 }
 .form-control:focus {
-  color: #212529;
-  background-color: #fff;
+  color: #fff;
+  background-color: #212529;
   border-color: #95cfeb;
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(42, 159, 214, 0.25);
