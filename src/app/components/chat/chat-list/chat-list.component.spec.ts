@@ -7,13 +7,26 @@ import { environment } from 'src/environments/environment';
 
 import { ChatListComponent } from './chat-list.component';
 
+function getUserId() {
+  if (localStorage.getItem('userJSON') !== null) {
+    return JSON.parse(localStorage.getItem('userJSON')!).id;
+  } else {
+    return 'null';
+  }
+}
+
 describe('ChatListComponent', () => {
   let component: ChatListComponent;
   let fixture: ComponentFixture<ChatListComponent>;
 
   const config: SocketIoConfig = {
-    url: environment.SOCKET_URL,
-    options: { query: `user_role=${localStorage.getItem('role')}` },
+    url: environment.API_URL,
+    options: {
+      query: {
+        user_role: localStorage.getItem('role')!,
+        userId: getUserId(),
+      },
+    },
   };
 
   beforeEach(async () => {
