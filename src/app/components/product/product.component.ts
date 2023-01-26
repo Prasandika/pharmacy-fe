@@ -11,7 +11,7 @@ export class ProductComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
-
+ //test
   editProduct(product: Product) {
     this.editingProduct = product;
   }
