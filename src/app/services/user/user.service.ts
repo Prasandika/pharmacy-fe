@@ -32,6 +32,19 @@ export class UserService {
       }
     );
 
+    var tokenRes = this.httpClient.post<any>(
+      `${environment.API_URL}/auth/login`,
+      {
+        email: email,
+        password: password,
+      }
+    );
+
+    tokenRes.subscribe((res) => {
+      localStorage.setItem('authToken', res.accessToken);
+      localStorage.setItem('refreshToken', res.refreshToken);
+    });
+
     res.subscribe(
       (res: User) => {
         console.log('res', res);
@@ -41,7 +54,7 @@ export class UserService {
           this.router.navigateByUrl('dashboard');
         }
         this.toastrService.success('Login Success');
-        localStorage.setItem('authToken', res.id);
+
         localStorage.setItem('role', res.role);
         localStorage.setItem('userJSON', JSON.stringify(res));
       },
@@ -85,12 +98,19 @@ export class UserService {
     return this.httpClient.get<User[]>(`${environment.API_URL}/users`);
   }
 
+  getRefreshAccessToken(): Observable<any> {
+    return this.httpClient.post(`${environment.API_URL}/auth/refresh`, {
+      refreshToken: localStorage.getItem('refreshToken'),
+    });
+  }
+
   getFullName(userId: string) {
     const user = this.users.find((u) => u.id === userId);
     return user?.firstName + ' ' + user?.lastName;
   }
 
   logout() {
+    // this.httpClient.delete(`${environment.API_URL}/auth/logout`,);
     localStorage.removeItem('authToken');
     localStorage.removeItem('role');
     localStorage.removeItem('userJSON');
